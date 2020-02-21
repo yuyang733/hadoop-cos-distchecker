@@ -248,12 +248,6 @@ public class CheckMapper extends Mapper<Object, Text, Text, Text> {
     @Override
     protected void cleanup(Context context) throws IOException, InterruptedException {
         LOG.info("Begin to clean up the check mapper.");
-//        if (null != this.sourceFs) {
-//            this.sourceFs.close();
-//        }
-//        if (null != this.targetFs) {
-//            this.targetFs.close();
-//        }
         super.cleanup(context);
     }
 }
