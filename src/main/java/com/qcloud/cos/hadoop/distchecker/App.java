@@ -43,7 +43,7 @@ public class App extends Configured implements Tool {
         Path workDirPath = new Path(workDir);
         FileSystem fileSystem = workDirPath.getFileSystem(this.getConf());
         if (!fileSystem.exists(workDirPath) && !fileSystem.isFile(workDirPath)) {
-            throw new IOException("the work dir path is not exist.");
+            throw new IOException(String.format("the work dir path [%s] is not exist.", workDir));
         }
     }
 
@@ -54,8 +54,8 @@ public class App extends Configured implements Tool {
             return -1;
         }
 
-        String sourceDirectory = args[0];
-        String sourceFileList = args[1];
+        String sourceFileList = args[0];
+        String sourceDirectory = args[1];
         String targetDirectory = args[2];
         String resultOutputPath = args[3];
 
