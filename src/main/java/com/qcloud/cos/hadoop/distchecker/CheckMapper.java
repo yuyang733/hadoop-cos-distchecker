@@ -2,9 +2,11 @@ package com.qcloud.cos.hadoop.distchecker;
 
 import com.qcloud.cos.hadoop.distchecker.checksum.CRC64;
 import com.qcloud.cos.hadoop.distchecker.checksum.utils.IOUtils;
-import org.apache.commons.codec.binary.Hex;
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.*;
+import org.apache.hadoop.fs.CosNFileStatus;
+import org.apache.hadoop.fs.FileStatus;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.slf4j.Logger;
@@ -12,9 +14,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.math.BigInteger;
-import java.security.DigestInputStream;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.zip.CheckedInputStream;
 
 public class CheckMapper extends Mapper<Object, Text, Text, Text> {
@@ -182,51 +181,6 @@ public class CheckMapper extends Mapper<Object, Text, Text, Text> {
                         context.write(new Text(sourceFilePathStr), new Text(checkReport.toString()));
                     }
                 }
-            } else if (null != ((CosNFileStatus) targetFileStatus).getETag()) {
-                LOG.info("Comparing the MD5 Hash between the source file [{}] and dest file [{}]", sourceFilePath,
-                        targetFilePath);
-                // 使用MD5值进行计算
-                String targetFileChecksum = ((CosNFileStatus) targetFileStatus).getETag();
-                // 计算源文件的MD5值
-                try (FSDataInputStream sourceFileInputStream = sourceFs.open(sourceFilePath)) {
-                    MessageDigest messageDigest = null;
-
-                    try {
-                        messageDigest = MessageDigest.getInstance("MD5");
-                    } catch (NoSuchAlgorithmException e) {
-                        LOG.error("Can not get the MD5 checksum algorithm instance.");
-                        CheckReport checkReport = new CheckReport(sourceFilePath.toString(),
-                                targetFilePath.toString(), "MD5",
-                                null,
-                                targetFileChecksum,
-                                CheckResult.UNCHECKED);
-                        context.write(new Text(sourceFilePathStr), new Text(checkReport.toString()));
-                        return;
-                    }
-
-                    DigestInputStream digestInputStream = new DigestInputStream(sourceFileInputStream,
-                            messageDigest);
-                    byte[] buffer = new byte[10 * 1024 * 1024];
-                    while (digestInputStream.read(buffer) != -1) ;
-                    LOG.info("finish compute the md5 hash.");
-                    byte[] md5hash = messageDigest.digest();
-                    if (Hex.encodeHexString(md5hash).compareToIgnoreCase(targetFileChecksum) != 0) {
-                        CheckReport checkReport = new CheckReport(sourceFilePath.toString(),
-                                targetFilePath.toString(), "MD5",
-                                Hex.encodeHexString(md5hash),
-                                targetFileChecksum,
-                                CheckResult.UNCONFIRM);
-                        context.write(new Text(sourceFilePathStr), new Text(checkReport.toString()));
-                        return;
-                    }
-                    CheckReport checkReport = new CheckReport(sourceFilePath.toString(),
-                            targetFilePath.toString(), "MD5",
-                            Hex.encodeHexString(md5hash),
-                            targetFileChecksum,
-                            CheckResult.SUCCESS);
-                    context.write(new Text(sourceFilePathStr), new Text(checkReport.toString()));
-                }
-
             } else {
                 CheckReport checkReport = new CheckReport(sourceFilePath.toString(),
                         targetFilePath.toString(), null,

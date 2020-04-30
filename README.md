@@ -110,18 +110,17 @@ distchecker会读取源文件列表和源目录执行MapReduce作业，进行分
 
 检查报告如下：
 
-```text
-hdfs://10.0.0.3:9000/benchmarks/TestDFSIO	hdfs://10.0.0.3:9000/benchmarks/TestDFSIO,cosn://hdfs-test-1250000000/benchmarks/TestDFSIO,None,None,None,SUCCESS,'The source file and the target file are the same.'
-hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_control	hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_control,cosn://hdfs-test-1250000000/benchmarks/TestDFSIO/io_control,None,None,None,SUCCESS,'The source file and the target file are the same.'
-hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_control/in_file_test_io_0	hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_control/in_file_test_io_0,cosn://hdfs-test-1250000000/benchmarks/TestDFSIO/io_control/in_file_test_io_0,MD5,dee27f089393936ef42dbd3ebd85750b,dee27f089393936ef42dbd3ebd85750b,SUCCESS,'The source file and the target file are the same.'
-hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_control/in_file_test_io_1	hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_control/in_file_test_io_1,cosn://hdfs-test-1250000000/benchmarks/TestDFSIO/io_control/in_file_test_io_1,MD5,526560d99bd99476e5a8e68f0ce87326,526560d99bd99476e5a8e68f0ce87326,SUCCESS,'The source file and the target file are the same.'
-hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_data	hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_data,cosn://hdfs-test-1250000000/benchmarks/TestDFSIO/io_data,None,None,None,SUCCESS,'The source file and the target file are the same.'
-hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_data/test_io_0	hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_data/test_io_0,cosn://hdfs-test-1250000000/benchmarks/TestDFSIO/io_data/test_io_0,CRC64,-1057373059199797567,-1057373059199797567,SUCCESS,'The source file and the target file are the same.'
-hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_data/test_io_1	hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_data/test_io_1,cosn://hdfs-test-1250000000/benchmarks/TestDFSIO/io_data/test_io_1,CRC64,-1057373059199797567,-1057373059199797567,SUCCESS,'The source file and the target file are the same.'
-hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_write	hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_write,cosn://hdfs-test-1250000000/benchmarks/TestDFSIO/io_write,None,None,None,SUCCESS,'The source file and the target file are the same.'
-hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_write/_SUCCESS	hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_write/_SUCCESS,cosn://hdfs-test-1250000000/benchmarks/TestDFSIO/io_write/_SUCCESS,MD5,d41d8cd98f00b204e9800998ecf8427e,d41d8cd98f00b204e9800998ecf8427e,SUCCESS,'The source file and the target file are the same.'
-hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_write/part-00000	hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_write/part-00000,cosn://hdfs-test-1250000000/benchmarks/TestDFSIO/io_write/part-00000,MD5,5f91c70529f8c9974bf7730c024c867f,5f91c70529f8c9974bf7730c024c867f,SUCCESS,'The source file and the target file are the same.'
-
+```csv
+hdfs://10.0.0.3:9000/benchmarks/TestDFSIO       hdfs://10.0.0.3:9000/benchmarks/TestDFSIO,cosn://hdfs-test-1252681929/benchmarks/TestDFSIO,None,None,None,SUCCESS,'The source file and the target file are the same.'
+hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_control    hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_control,cosn://hdfs-test-1252681929/benchmarks/TestDFSIO/io_control,None,None,None,SUCCESS,'The source file and the target file are the same.'
+hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_control/in_file_test_io_0  hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_control/in_file_test_io_0,cosn://hdfs-test-1252681929/benchmarks/TestDFSIO/io_control/in_file_test_io_0,CRC64,1566310986176587838,1566310986176587838,SUCCESS,'The source file and the target file are the same.'
+hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_control/in_file_test_io_1  hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_control/in_file_test_io_1,cosn://hdfs-test-1252681929/benchmarks/TestDFSIO/io_control/in_file_test_io_1,CRC64,-6584441696534676125,-6584441696534676125,SUCCESS,'The source file and the target file are the same.'
+hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_data       hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_data,cosn://hdfs-test-1252681929/benchmarks/TestDFSIO/io_data,None,None,None,SUCCESS,'The source file and the target file are the same.'
+hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_data/test_io_0     hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_data/test_io_0,cosn://hdfs-test-1252681929/benchmarks/TestDFSIO/io_data/test_io_0,CRC64,3534425600523290380,3534425600523290380,SUCCESS,'The source file and the target file are the same.'
+hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_data/test_io_1     hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_data/test_io_1,cosn://hdfs-test-1252681929/benchmarks/TestDFSIO/io_data/test_io_1,CRC64,3534425600523290380,3534425600523290380,SUCCESS,'The source file and the target file are the same.'
+hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_write      hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_write,cosn://hdfs-test-1252681929/benchmarks/TestDFSIO/io_write,None,None,None,SUCCESS,'The source file and the target file are the same.'
+hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_write/_SUCCESS     hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_write/_SUCCESS,cosn://hdfs-test-1252681929/benchmarks/TestDFSIO/io_write/_SUCCESS,CRC64,0,0,SUCCESS,'The source file and the target file are the same.'
+hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_write/part-00000   hdfs://10.0.0.3:9000/benchmarks/TestDFSIO/io_write/part-00000,cosn://hdfs-test-1252681929/benchmarks/TestDFSIO/io_write/part-00000,CRC64,-4804567387993776854,-4804567387993776854,SUCCESS,'The source file and the target file are the same.'
 
 ```
 
@@ -158,7 +157,3 @@ check_list.txt中的源文件路径 源文件绝对路径,目的文件绝对路�
 1.**为什么检查报告的CRC64值出现负数？**
 
 因为CRC64值，有可能是20位的值，此时已超过Java long型的表示范围，但是其底层字节是一致的，而打印long型时，会出现负数表示；
-
-2.**为什么既有MD5值校验又有CRC64值校验？**
-
-目前,COS的简单上传依然使用MD5值作为校验码，而CRC64校验码只用于分块上传文件的校验码。因此，这里针对两种不同类型的文件，使用的是不同的校验码来检查。
