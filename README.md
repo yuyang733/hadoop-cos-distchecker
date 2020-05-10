@@ -17,9 +17,13 @@ Hadoop-cos-DistChecker 是一个在使用`hadoop distcp`命令从HDFS迁移数�
 
 - Hadooop MapReduce的运行环境
 
-NOTE：这里hadoop-cos依赖需要选择最新版本（GitHub Tag为5.8.2以上）才能支持CRC64校验码的获取。
+NOTE：如果是自建Hadoop集群，则hadoop-cos依赖需要选择最新版本（GitHub Tag为5.8.2以上）才能支持CRC64校验码的获取。如果是使用腾讯云EMR套件，则2020年5月8日后创建的集群都包含该Hadoop-cos版本。否则，需要提工单处理。
 
 ## 使用说明
+
+由于Hadoop-cos-distchecker需要获取Hadoop-cos（CosN文件系统）中的文件CRC64校验值，因此，在运行该工具以前，需要将配置项`fs.cosn.crc64.checksum.enabled`置为true以支持获取Hadoop-cos文件的CRC64校验和，待工具运行完成后，再将该选项置回false以关闭CRC64校验和的获取。
+
+**注意**: 由于Hadoop-COS支持的CRC64校验和与HDFS文件系统的CRC32C校验和无法兼容，因此在使用完该工具以后，务必将上述配置项恢复为关闭状态，否则可能会导致Hadoop-cos在某些调用文件系统`getFileChecksum`接口的场景下运行失败。
 
 ### 参数概念
 
