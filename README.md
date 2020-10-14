@@ -13,7 +13,7 @@ Hadoop-cos-DistChecker 是一个在使用`hadoop distcp`命令从HDFS迁移数�
 ## 前置依赖
 
 
-- [hadoop-cos-2.x.x-shaded.jar](https://github.com/tencentyun/hadoop-cos/tree/master/dep)
+- [hadoop-cos](https://github.com/tencentyun/hadoop-cos)
 
 - Hadooop MapReduce的运行环境
 
