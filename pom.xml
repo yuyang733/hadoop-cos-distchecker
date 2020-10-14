@@ -10,6 +10,7 @@
 
     <properties>
         <hadoop.version>2.8.5</hadoop.version>
+        <hadoop-cos.version>5.8.5</hadoop-cos.version>
     </properties>
 
     <dependencies>
@@ -34,9 +35,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.hadoop</groupId>
+            <groupId>com.qcloud.cos</groupId>
             <artifactId>hadoop-cos</artifactId>
-            <version>${hadoop.version}</version>
+            <version>${hadoop.version}-${hadoop-cos.version}</version>
             <scope>provided</scope>
         </dependency>
 
